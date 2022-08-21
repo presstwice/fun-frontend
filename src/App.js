@@ -18,11 +18,14 @@ export default function App() {
 
         <div className="bio">
           minting fun tokens is a great way to get some fun in your life.
-        </div>
 
-        <button className="waveButton" onClick={wave}>
+
+        </div>
+      <div className="buttonContainer">
+        <button className="FunButton" onClick={wave}>
           Mint a fun token 
         </button>
+      </div>
       </div>
     </div>
   );
