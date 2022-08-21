@@ -13,15 +13,15 @@ export default function App() {
 
       <div className="dataContainer">
         <div className="header">
-        👋 Hey there!
+        It's a mint party 🎉
         </div>
 
         <div className="bio">
-        I am farza and I worked on self-driving cars so that's pretty cool right? Connect your Ethereum wallet and wave at me!
+          minting fun tokens is a great way to get some fun in your life.
         </div>
 
         <button className="waveButton" onClick={wave}>
-          Wave at Me
+          Mint a fun token 
         </button>
       </div>
     </div>
