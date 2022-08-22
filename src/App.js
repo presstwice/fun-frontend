@@ -2,11 +2,13 @@ import * as React from "react";
 import { ethers } from "ethers";
 import './App.css';
 
+const wave = () => {
+    
+}
+
 const App = () => {
   const checkIfWalletIsConnected = () => {
     /* First make sure we have access to window.ethereum */
-
-
 const { ethereum } = window;
 
 if (!ethereum) {
@@ -24,6 +26,7 @@ useEffect(() => {
   
   return (
     <div className="mainContainer">
+
       <div className="dataContainer">
         <div className="header">
         It's a mint party 🎉
@@ -31,8 +34,9 @@ useEffect(() => {
 
         <div className="bio">
           minting fun tokens is a great way to get some fun in your life.
-        </div>
 
+
+        </div>
       <div className="buttonContainer">
         <button className="FunButton" onClick={wave}>
           Mint a fun token 
@@ -41,7 +45,6 @@ useEffect(() => {
       </div>
     </div>
   );
-
 }
 
 export default App
