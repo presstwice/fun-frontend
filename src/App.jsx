@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { ethers } from "ethers";
 import './App.css';
 
@@ -7,22 +7,59 @@ const wave = () => {
 }
 
 const App = () => {
-  const checkIfWalletIsConnected = () => {
-    /* First make sure we have access to window.ethereum */
-const { ethereum } = window;
 
-if (!ethereum) {
-  console.log("Make sure you have MetaMask installed and logged in");
-} else {
-  console.log("We have the ethereum object", ethereum);
-  }
-}
+  /* Just a state variable we use to store our user's public wallet. */
+  const [currentAccount, setCurrentAccount] = useState("");
+
+
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { ethereum } = window;
+
+    if (!ethereum) {
+      console.log("Make sure you have MetaMask installed and logged in");
+    } else {
+      console.log("We have the ethereum object", ethereum);
+    }
+    
 
 /* This runs our function when the page loads. */
 
-useEffect(() => {
-  checkIfWalletIsConnected();
-}, [])
+    const accounts = await ethereum.request({ method: "eth_accounts" });
+
+    if (accounts.length !== 0) {
+      const account = accounts[0];
+      console.log("found an authorized account", account);
+      setCurrentAccount(account);
+    } else {
+      console.log("No authorized accounts found")
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/** Implement your connectWallet here */
+const connectWallet = async () => {
+  try {
+    const { ethereum } = window;
+
+    if (!ethereum) {
+      alert("Get MetaMask!");
+      return;
+    }
+
+    const accoounts = await ethereum.request({ method: "eth_requestAccounts" });
+
+    console.log("Connected", accoounts[0]);
+    setCurrentAccount(accoounts[0]);
+  } catch (error) {
+    console.log(error)
+  }
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, [])
   
   return (
     <div className="mainContainer">
