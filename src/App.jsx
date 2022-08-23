@@ -77,6 +77,12 @@ const connectWallet = async () => {
         <button className="FunButton" onClick={wave}>
           Mint a fun token 
         </button>
+
+        {!currentAccount && (
+          <button className="FunButton" onClick={connectWallet}>
+            Connect Wallet
+          </button>
+        )}
       </div>
       </div>
     </div>
