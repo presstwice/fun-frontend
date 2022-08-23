@@ -21,8 +21,6 @@ const App = () => {
     } else {
       console.log("We have the ethereum object", ethereum);
     }
-    
-
 /* This runs our function when the page loads. */
 
     const accounts = await ethereum.request({ method: "eth_accounts" });
@@ -56,6 +54,7 @@ const connectWallet = async () => {
   } catch (error) {
     console.log(error)
   }
+}
 
   useEffect(() => {
     checkIfWalletIsConnected();
